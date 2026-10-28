@@ -1,0 +1,418 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #f1f1f1;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* OBJETOS 3D VOANDO AO FUNDO */
+.bg-3d-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    transform-style: preserve-3d;
+    opacity: 0.6;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Cubo 3D Roxo */
+.shape-cube {
+    top: 15%;
+    left: 10%;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
+    animation: floatCube 8s infinite alternate;
+}
+
+/* Esfera 3D Verde */
+.shape-sphere {
+    bottom: 20%;
+    right: 12%;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #00ff88, #006633);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+    animation: floatSphere 10s infinite alternate;
+}
+
+/* Torus / Anel Roxo e Verde */
+.shape-torus {
+    top: 60%;
+    left: 15%;
+    width: 80px;
+    height: 80px;
+    border: 16px solid #8a2be2;
+    border-top-color: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+    animation: floatTorus 12s infinite linear;
+}
+
+/* Pirâmide / Diamante */
+.shape-pyramid {
+    top: 25%;
+    right: 20%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #00ff88, #8a2be2);
+    transform: rotate45deg;
+    box-shadow: 0 0 35px rgba(138, 43, 226, 0.5);
+    animation: floatPyramid 9s infinite alternate;
+}
+
+.shape-cube2 {
+    bottom: 10%;
+    left: 45%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #00ff88, #004d26);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    animation: floatCube 11s infinite alternate-reverse;
+}
+
+/* Animações Flutuantes 3D */
+@keyframes floatCube {
+    0% { transform: translateY(0) rotateX(0deg) rotateY(0deg) translateZ(0px); }
+    100% { transform: translateY(-40px) rotateX(180deg) rotateY(360deg) translateZ(50px); }
+}
+
+@keyframes floatSphere {
+    0% { transform: translateY(0) scale(1) translateZ(0px); }
+    100% { transform: translateY(-60px) scale(1.15) translateZ(80px); }
+}
+
+@keyframes floatTorus {
+    0% { transform: translateY(0) rotate(0deg) rotateX(20deg); }
+    100% { transform: translateY(-50px) rotate(360deg) rotateX(50deg); }
+}
+
+@keyframes floatPyramid {
+    0% { transform: translateY(0) rotate(45deg) rotateY(0deg); }
+    100% { transform: translateY(-45px) rotate(225deg) rotateY(180deg); }
+}
+
+/* CONTAINER PRINCIPAL */
+.app-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #00ff88, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* SEÇÕES */
+.section-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-left: 4px solid #00ff88;
+    padding-left: 12px;
+}
+
+.section-sub {
+    color: #888;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* CHECKLIST DE TAREFAS DA ROTINA */
+.planner-section {
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.todo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.task-card {
+    background: #121216;
+    border: 1px solid #2a2a35;
+    border-radius: 12px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    border-color: #8a2be2;
+    transform: translateY(-2px);
+}
+
+.task-check {
+    display: none;
+}
+
+.task-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 15px;
+}
+
+.custom-check {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #8a2be2;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    flex-shrink: 0;
+}
+
+.task-check:checked + .task-label .custom-check {
+    background-color: #00ff88;
+    border-color: #00ff88;
+}
+
+.task-check:checked + .task-label .custom-check::after {
+    content: '✓';
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.task-check:checked + .task-label .task-info strong {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-info strong {
+    display: block;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.task-info small {
+    color: #777;
+    font-size: 0.82rem;
+}
+
+/* CARDS DE DICAS (INTERATIVOS) */
+.tips-section {
+    margin-top: 40px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.tip-card {
+    background: linear-gradient(145deg, rgba(25, 25, 35, 0.9), rgba(15, 15, 20, 0.9));
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    border-color: #00ff88;
+    box-shadow: 0 12px 30px rgba(0, 255, 136, 0.25);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.tip-card h3 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.tip-card p {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.card-btn {
+    display: inline-block;
+    color: #00ff88;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: color 0.2s;
+}
+
+.tip-card:hover .card-btn {
+    color: #8a2be2;
+}
+
+/* MODAL EFEITO DESTAQUE */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #0f0f15;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #00ff88, #8a2be2) 1;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 50px rgba(138, 43, 226, 0.4);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #00ff88;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 12px;
+}
+
+.modal-icon {
+    font-size: 2rem;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.modal-body p {
+    color: #ccc;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-body ul {
+    margin-left: 20px;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.modal-highlight {
+    background: rgba(138, 43, 226, 0.15);
+    border-left: 3px solid #8a2be2;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #00ff88 !important;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .planner-section {
+        padding: 20px;
+    }
+}

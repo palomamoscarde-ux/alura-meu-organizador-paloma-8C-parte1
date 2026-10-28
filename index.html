@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador Paloma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fundo 3D com objetos flutuantes -->
+    <div class="bg-3d-container">
+        <div class="shape shape-cube"></div>
+        <div class="shape shape-sphere"></div>
+        <div class="shape shape-torus"></div>
+        <div class="shape shape-pyramid"></div>
+        <div class="shape shape-cube2"></div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="app-container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <h1 class="title">Organizador <span class="gradient-text">Paloma</span></h1>
+            <p class="description">
+                Sua central inteligente para gerenciamento de rotinas, controle de tarefas e alta produtividade. 
+                Organize seu dia com fluidez, equilíbrio e foco total no que importa.
+            </p>
+        </header>
+
+        <!-- Seção de Painel e Tarefas da Rotina -->
+        <section class="planner-section">
+            <h2 class="section-title">Sua Rotina Diária</h2>
+            <div class="todo-grid">
+                <div class="task-card">
+                    <input type="checkbox" id="task1" class="task-check">
+                    <label for="task1" class="task-label">
+                        <span class="custom-check"></span>
+                        <div class="task-info">
+                            <strong>Rotina Matinal & Meditação</strong>
+                            <small>07:00 - Bebida matinal e 10 min de foco</small>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="task-card">
+                    <input type="checkbox" id="task2" class="task-check">
+                    <label for="task2" class="task-label">
+                        <span class="custom-check"></span>
+                        <div class="task-info">
+                            <strong>Bloco de Trabalho Profundo</strong>
+                            <small>09:00 - Foco nas prioridades do dia</small>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="task-card">
+                    <input type="checkbox" id="task3" class="task-check">
+                    <label for="task3" class="task-label">
+                        <span class="custom-check"></span>
+                        <div class="task-info">
+                            <strong>Atividade Física & Movimento</strong>
+                            <small>17:30 - Treino cardio / caminhada</small>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="task-card">
+                    <input type="checkbox" id="task4" class="task-check">
+                    <label for="task4" class="task-label">
+                        <span class="custom-check"></span>
+                        <div class="task-info">
+                            <strong>Leitura & Desconexão</strong>
+                            <small>21:00 - Desligar telas e relaxar</small>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Cards Interativos de Dicas -->
+        <section class="tips-section">
+            <h2 class="section-title">Dicas de Produtividade & Bem-Estar</h2>
+            <p class="section-sub">Clique em qualquer card para ver os detalhes completos em foco.</p>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="tip-card" onclick="openModal('modal1')">
+                    <div class="card-icon">⚡</div>
+                    <h3>Técnica Pomodoro</h3>
+                    <p>Como dividir seu tempo em blocos para focar sem exaustão mental.</p>
+                    <span class="card-btn">Ver Dica &rarr;</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tip-card" onclick="openModal('modal2')">
+                    <div class="card-icon">🎯</div>
+                    <h3>Regra dos 2 Minutos</h3>
+                    <p>Elimine pequenas tarefas acumuladas de forma instantânea.</p>
+                    <span class="card-btn">Ver Dica &rarr;</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="tip-card" onclick="openModal('modal3')">
+                    <div class="card-icon">🌙</div>
+                    <h3>Higiene do Sono</h3>
+                    <p>Rituais noturnos para garantir um descanso reparador e acordar disposta.</p>
+                    <span class="card-btn">Ver Dica &rarr;</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modais Explicativos -->
+    <div id="modal1" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal1')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            <div class="modal-header">
+                <span class="modal-icon">⚡</span>
+                <h2>Técnica Pomodoro Avançada</h2>
+            </div>
+            <div class="modal-body">
+                <p>A técnica Pomodoro é ideal para manter a concentração sem sobrecarregar o cérebro:</p>
+                <ul>
+                    <li><strong>25 minutos:</strong> Foco total em uma única tarefa (sem distrações ou celular).</li>
+                    <li><strong>5 minutos:</strong> Pausa curta para alongar, beber água ou respirar.</li>
+                    <li><strong>A cada 4 blocos:</strong> Faça uma pausa mais longa de 15 a 30 minutos.</li>
+                </ul>
+                <p class="modal-highlight"><em>Dica Paloma:</em> Agrupe tarefas parecidas no mesmo bloco para economizar energia mental!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal2')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            <div class="modal-header">
+                <span class="modal-icon">🎯</span>
+                <h2>A Regra dos 2 Minutos</h2>
+            </div>
+            <div class="modal-body">
+                <p>Derivada da metodologia GTD (Getting Things Done), esta regra simples evita o acúmulo de pequenas pendências:</p>
+                <ul>
+                    <li>Se uma tarefa leva <strong>menos de 2 minutos</strong> para ser concluída (ex: responder uma mensagem rápida, guardar um objeto, arrumar a cama), <strong>faça imediatamente</strong>.</li>
+                    <li>Não adicione essa tarefa à sua lista nem adie para depois.</li>
+                </ul>
+                <p class="modal-highlight"><em>Resultado:</em> Redução imediata da ansiedade e checklist limpo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal3')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+            <div class="modal-header">
+                <span class="modal-icon">🌙</span>
+                <h2>Higiene do Sono & Recuperação</h2>
+            </div>
+            <div class="modal-body">
+                <p>Sua produtividade de amanhã depende da qualidade do seu descanso hoje:</p>
+                <ul>
+                    <li><strong>Desconecte telas:</strong> Desligue celular e TV pelo menos 45 minutos antes de dormir.</li>
+                    <li><strong>Ambiente escuro:</strong> Deixe o quarto o mais escuro e fresco possível.</li>
+                    <li><strong>Consistência:</strong> Tente dormir e acordar nos mesmos horários todos os dias.</li>
+                </ul>
+                <p class="modal-highlight"><em>Benefício:</em> Melhora o foco, o humor e a memória para as atividades do dia seguinte.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script leve para controle do efeito Modal -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita rolagem de fundo
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto'; // Reativa rolagem
+        }
+
+        function closeModalOnOuterClick(event, id) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeModal(id);
+            }
+        }
+    </script>
+</body>
+</html>
